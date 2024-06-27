@@ -128,7 +128,7 @@ body {
   /* Estilos base para los botones */
 .delete-button,
 .update-button,
-.filter-button {
+.filter-button, .filter-button-t, .filter-button-e {
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
@@ -164,6 +164,22 @@ body {
 .filter-button:hover {
   background-color: #3490dc; /* Azul */
 }
+.filter-button-t{
+  background-color: #FFBFA9 ;
+}
+
+.filter-button-t:hover{
+  background-color: #F27BBD; /* Azul */
+}
+.filter-button-e{
+  background-color: #A0C3D2
+  
+
+}
+.filter-button-e:hover {
+  background-color: #088395; /* Azul */
+}
+
 
 .modal-backdrop {
   position: fixed;

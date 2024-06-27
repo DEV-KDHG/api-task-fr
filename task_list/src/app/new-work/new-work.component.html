@@ -7,7 +7,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form (ngSubmit)="createTask()">
+      <form (ngSubmit)="createTask(); isClose();">
         <div class="form-group">
           <label for="taskName">Nombre:</label>
           <input type="text" id="taskName" name="taskName" [(ngModel)]="name" required>
@@ -29,11 +29,9 @@
           </select>
         </div>
         <div class="button-container">
-          <button type="submit">Guardar</button>
+          <button  type="submit">Guardar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-

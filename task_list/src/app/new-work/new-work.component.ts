@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { ServiceService } from '../services/service.service';
+import { NgZone } from '@angular/core'; // Importa NgZone
 
 @Component({
   selector: 'app-new-work',
@@ -18,8 +19,8 @@ export class NewWorkComponent implements OnInit {
   selectedState: any; // Variable para almacenar el estado seleccionado
   states: any[] = [];
   categories: any[] = [];
-
-  constructor(private serviceService: ServiceService, private router: Router) {}
+ 
+  constructor(private serviceService: ServiceService, private router: Router,  private zone: NgZone) {}
 
   ngOnInit() {
     this.loadAllStates();
@@ -45,8 +46,8 @@ export class NewWorkComponent implements OnInit {
     this.serviceService.createTask(taskData).subscribe({
       next: (response) => {
         console.log('Task created successfully', response);
-        // Limpieza de formulario o acciones post-creación
-        this.resetForm();
+      this.resetForm();
+      this.close.emit();
       },
       error: (error) => console.error('There was an error!', error)
     });
@@ -82,6 +83,10 @@ export class NewWorkComponent implements OnInit {
 
   isClose() {
     this.close.emit();
+    
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => this.zone.run(() => this.router.navigate(['/task-list'])), 0);
+    });
   }
 
   private showModalSubject = new Subject<boolean>();

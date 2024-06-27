@@ -43,14 +43,14 @@
            <td class="py-3 px-4">{{ state.nameState }}</td>
            <td class="py-3 px-4">{{ state.description }}</td>
            <td class="py-3 px-4 flex space-x-2">
-            <button class="delete-button" (click)="deleteStateById(state.id)">Eliminar</button>
+            <button class="delete-button" (click)="deleteStateById(state._id)">Eliminar</button>
            </td>
        </tr>
      </tbody>
    </table>
    <div class="flex justify-end space-x-4 mt-5">
-     <button routerLink="/task-list" routerLinkActive="active" class="filter-button">Tarea</button>
-     <button routerLink="/category" routerLinkActive="active" class="filter-button">Categoría</button>
+     <button routerLink="/task-list" routerLinkActive="active" class="filter-button-t">Tarea</button>
+     <button routerLink="/category" routerLinkActive="active" class="filter-button-e">Categoría</button>
    </div>
  </div>
 
