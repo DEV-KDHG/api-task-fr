@@ -1,0 +1,39 @@
+<div class="new-work-modal" [ngClass]="{'dragging': isDragging}" (mousedown)="startDragging($event)">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Crear Tarea</h2>
+      <button class="close-button" (click)="isClose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="createTask()">
+        <div class="form-group">
+          <label for="taskName">Nombre:</label>
+          <input type="text" id="taskName" name="taskName" [(ngModel)]="name" required>
+        </div>
+        <div class="form-group">
+          <label for="taskDescription">Descripción:</label>
+          <textarea id="taskDescription" name="taskDescription" [(ngModel)]="description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="taskStatus">Estado:</label>
+          <select id="taskStatus" name="taskStatus" [(ngModel)]="selectedState" (ngModelChange)="onSelectState($event)" required>
+            <option *ngFor="let state of states" [ngValue]="state">{{ state.nameState }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="taskCategory">Categoría:</label>
+          <select id="taskCategory" name="taskCategory" [(ngModel)]="selectedCategory" (ngModelChange)="onSelectCategory($event)" required>
+            <option *ngFor="let category of categories" [ngValue]="category">{{ category.nameCategory }}</option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

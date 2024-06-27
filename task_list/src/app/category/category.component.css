@@ -1,0 +1,236 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  @keyframes colorChange {
+  
+    100% {
+      color: #34495e; /* Vuelve al color inicial */
+    }
+  }
+ 
+  .center-align {
+    text-align: center;
+    font-size: 40px; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    animation: colorChange 5s infinite; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task-search {
+    display: flex;
+    justify-content:right;
+    margin: 20px 0;
+  }
+  
+  #search-task-input {
+    width: 120%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .flex-container {
+    display: flex;
+    align-items: center;
+    gap: 90px; /* Espacio entre el botón y el div de búsqueda */
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .task-list {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tasks-table th,
+  .tasks-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .bg-blue-100 {
+    background-color: #ebf8ff;
+  }
+  
+  .text-black {
+    color: #000;
+  }
+  
+  .uppercase {
+    text-transform: uppercase;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem; /* 14px */
+  }
+  
+  .leading-normal {
+    line-height: normal;
+  }
+  
+  .border-b {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .border-gray-200 {
+    border-color: #e2e8f0;
+  }
+  
+  .hover\:bg-gray-100:hover {
+    background-color: #f7fafc;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .space-x-2 > * + * {
+    margin-left: 8px;
+  }
+  
+  .justify-end {
+    justify-content: flex-end;
+  }
+  
+  .space-x-4 > * + * {
+    margin-left: 16px;
+  }
+  
+  .mt-5 {
+    margin-top: 20px;
+  }
+  
+  /* Estilos base para los botones */
+.delete-button,
+.update-button,
+.filter-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.875rem; /* 14px */
+  color: white;
+}
+
+/* Colores específicos de fondo para cada botón */
+.delete-button {
+  background-color: #e3342f; 
+ 
+}
+
+.update-button {
+  background-color: #f6993f; /* Naranja */
+}
+
+.filter-button {
+  background-color: #38c172; /* Verde */
+}
+
+/* Colores específicos de fondo al pasar el mouse por encima para cada botón */
+.delete-button:hover {
+  background-color: #cc1f1a; /* Rojo oscuro */
+}
+
+.update-button:hover {
+  background-color: #de751f; /* Naranja oscuro */
+}
+
+.filter-button:hover {
+  background-color: #3490dc; /* Azul */
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que el modal esté sobre otros elementos */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50%; 
+  z-index: 1001; 
+  position: relative; /* Consolidado aquí para evitar duplicados */
+}
+
+.input-field {
+  width: calc(100% - 40px); /* Ajusta al 100% del .modal-content menos el padding */
+  padding: 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: block;
+}
+
+.input-field:focus {
+  border-color: #3490dc; /* Mejora la accesibilidad con un borde de foco */
+}
+
+.save-button {
+  width: 100%; /* Ajuste para simplificar y mejorar la coherencia */
+  padding: 10px;
+  margin: 8px 0; /* Ajustado para coherencia */
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+}
+
+.save-button:hover, .save-button:focus {
+  background-color: #3490dc; /* Estilo coherente para hover y focus */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover, .close-button:focus {
+  background-color: #d32f2f; /* Estilo coherente para hover y focus */
+}

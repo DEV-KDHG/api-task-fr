@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="background-animation">
+      <!-- Contenido integrado en lugar del título h1 -->
+      <div class="content">
+        <div class="content__container">
+          <p class="content__container__text">
+            Bienvenido a tu Gestor de 
+          </p>
+          <ul class="content__container__list">
+            <li class="content__container__list__item">tareas !</li>
+            <li class="content__container__list__item">vida !</li>
+            <li class="content__container__list__item">salud !</li>
+            <li class="content__container__list__item">trabajo !</li>
+          </ul>
+        </div>
+      </div>
+      <div class="home-buttons">
+        <!-- Botón actualizado con estilo y animación -->
+        <button class="cta" [routerLink]="['/task-list']">
+          <span class="hover-underline-animation">Ver lista de tareas</span>
+          <svg
+            id="arrow-horizontal"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="10"
+            viewBox="0 0 46 16"
+          >
+            <path
+              id="Path_10"
+              data-name="Path 10"
+              d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+              transform="translate(30)"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>

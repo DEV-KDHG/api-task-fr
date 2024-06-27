@@ -1,0 +1,68 @@
+<div class="container">
+
+
+  <h1 class="center-align">Categorías</h1>
+
+
+  <div style="display: flex; align-items: center; justify-content: space-between;">
+    <button class="filter-button" (click)="toggleAddCategoryForm()">Añadir Categoría</button>
+
+
+    <div class="task-search" style="position: relative; display: flex; align-items: center;">
+      <input type="text" id="search-task-input" placeholder="Buscar categoría..." class="input-field" [(ngModel)]="searchQuery" (input)="searchCategory()">
+      <i class="material-icons" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">search</i>
+    </div>
+  </div>
+
+
+  <div *ngIf="showAddCategoryForm" class="modal-backdrop">
+    <div class="modal-content">
+      <h1 class="center-align">Crear Categoría</h1>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <button class="close-button" (click)="toggleAddCategoryForm()">Cerrar</button>
+      </div>
+      <input type="text" [(ngModel)]="newCategory.nameCategory" placeholder="Nombre de la categoría" class="input-field">
+      <input type="text" [(ngModel)]="newCategory.description" placeholder="Descripción de la categoría" class="input-field">
+      <button class="save-button" (click)="createCategory()">Guardar Categoría</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="task-list">
+    <table class="tasks-table w-full">
+      <thead class="bg-blue-100 text-black uppercase text-sm leading-normal">
+        <tr>
+          <th class="py-3 px-4 text-left">Nombre</th>
+          <th class="py-3 px-4 text-left">Descripción</th>
+          <th class="py-3 px-4 text-left">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-black text-sm font-light">
+        <tr *ngFor="let category of categories; let i = index" class="border-b border-gray-200 hover:bg-gray-100">
+          <td class="py-3 px-4">{{ category.nameCategory }}</td>
+          <td class="py-3 px-4">{{ category.description }}</td>
+          <td class="py-3 px-4 flex space-x-2">
+            <button class="delete-button" (click)="deleteCategoryById(category._id)">Eliminar</button>
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="flex justify-end space-x-4 mt-5">
+      <button routerLink="/task-list" routerLinkActive="active" class="filter-button">Tarea</button>
+      <button routerLink="/status" routerLinkActive="active" class="filter-button">Estado</button>
+   
+    </div>
+    </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</div>
+
+
+

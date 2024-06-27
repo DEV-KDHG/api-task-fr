@@ -1,0 +1,60 @@
+ <div class="container">
+
+
+  <h1 class="center-align">Estados</h1>
+ 
+  <div style="display: flex; align-items: center; justify-content: space-between;">
+
+    <button class="filter-button" (click)="toggleAddStateForm()">Añadir Estado</button>
+ 
+
+    <div class="task-search" style="position: relative; display: flex; align-items: center;">
+      <input type="text" id="search-task-input" placeholder="Buscar estado..." class="input-field" [(ngModel)]="searchQuery" (input)="searchState()" />
+      <i class="material-icons" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">search</i>
+    </div>
+  </div>
+
+
+ <!-- Modal -->
+ <div *ngIf="showAddStateForm" class="modal-backdrop">
+   <div class="modal-content">
+    <h1 class="center-align">Crear Estado</h1>
+     <div style="display: flex; align-items: center; justify-content: space-between;">
+       <button class="close-button" (click)="toggleAddStateForm()">Cerrar</button>
+     </div>
+     <input type="text" placeholder="Nombre del estado" class="input-field" [(ngModel)]="newState.nameState" />
+     <input type="text" placeholder="Descripción del estado" class="input-field" [(ngModel)]="newState.description" />
+     <button class="save-button" (click)="createState()">Guardar Estado</button>
+   </div>
+ </div>
+
+
+ <div class="task-list">
+   <table class="tasks-table w-full">
+     <thead class="bg-blue-100 text-black uppercase text-sm leading-normal">
+       <tr>
+           <th class="py-3 px-4 text-left">Nombre</th>
+           <th class="py-3 px-4 text-left">Descripción</th>
+           <th class="py-3 px-4 text-left">Acciones</th>
+       </tr>
+     </thead>
+     <tbody class="text-black text-sm font-light">
+       <tr *ngFor="let state of states" class="border-b border-gray-200 hover:bg-gray-100">
+           <td class="py-3 px-4">{{ state.nameState }}</td>
+           <td class="py-3 px-4">{{ state.description }}</td>
+           <td class="py-3 px-4 flex space-x-2">
+            <button class="delete-button" (click)="deleteStateById(state.id)">Eliminar</button>
+           </td>
+       </tr>
+     </tbody>
+   </table>
+   <div class="flex justify-end space-x-4 mt-5">
+     <button routerLink="/task-list" routerLinkActive="active" class="filter-button">Tarea</button>
+     <button routerLink="/category" routerLinkActive="active" class="filter-button">Categoría</button>
+   </div>
+ </div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
+</div>
+

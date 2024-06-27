@@ -1,0 +1,78 @@
+<div class="container">
+  <h1 class="center-align">Gestor de Tareas</h1>
+
+  <div style="display: flex; align-items: center; justify-content: space-between;">
+    <button (click)="showNewTaskPanel()" class="filter-button">Nueva Tarea</button>
+    <div class="task-search" style="position: relative;">
+      <input type="text" id="search-task-input" placeholder="Buscar tareas..." class="input-field" [(ngModel)]="searchQuery" (input)="searchTasks()" />
+      <i class="material-icons" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">search</i>
+    </div>
+  </div>
+
+  <div class="task-list">
+    <table class="tasks-table w-full">
+      <thead class="bg-blue-100 text-black uppercase text-sm leading-normal">
+        <tr>
+          <th class="py-3 px-4 text-left">Nombre</th>
+          <th class="py-3 px-4 text-left">Descripción</th>
+          <th class="py-3 px-4 text-left">Estado</th>
+          <th class="py-3 px-4 text-left">Categoría</th>
+          <th class="py-3 px-4 text-left">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-black text-sm font-light">
+        <tr *ngFor="let task of filteredTasks" class="border-b border-gray-200 hover:bg-gray-100">
+          <td class="py-3 px-4">{{ task.name }}</td>
+          <td class="py-3 px-4">{{ task.description }}</td>
+          <td class="py-3 px-4">{{ task.estado?.nameState }}</td>
+          <td class="py-3 px-4">{{ task.categoria?.nameCategory }}</td>
+          
+          <td class="py-3 px-4 flex space-x-2">
+            <button class="delete-button" (click)="deleteTask(task._id)">Eliminar</button>
+            <button class="update-button" (click)="editTask(task)">Actualizar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="flex justify-end space-x-4 mt-5">
+      <button routerLink="/status" routerLinkActive="active" class="filter-button">Estado</button>
+      <button routerLink="/category" routerLinkActive="active" class="filter-button">Categoría</button>
+    </div>
+  </div>
+
+  <!-- Panel flotante para nueva tarea -->
+  <div class="new-work-panel" *ngIf="showNewWork">
+    <app-new-work (close)="closeNewTaskPanel()"></app-new-work>
+  </div>
+
+  <!-- Formulario de edición de tarea -->
+  <div class="edit-task-form" *ngIf="editingTask">
+    <h2>Editar Tarea</h2>
+    <form (ngSubmit)="saveEditedTask()">
+      <div class="form-group">
+        <label for="editTaskName">Nombre:</label>
+        <input type="text" id="editTaskName" name="editTaskName" [(ngModel)]="editedTask.name" required>
+      </div>
+      <div class="form-group">
+        <label for="editTaskDescription">Descripción:</label>
+        <textarea id="editTaskDescription" name="editTaskDescription" [(ngModel)]="editedTask.description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="editTaskStatus">Estado:</label>
+        <select id="editTaskStatus" name="editTaskStatus" [(ngModel)]="editedTask.estadoId" required>
+          <option *ngFor="let state of states" [value]="state._id">{{ state.nameState }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="editTaskCategory">Categoría:</label>
+        <select id="editTaskCategory" name="editTaskCategory" [(ngModel)]="editedTask.categoriaId" required>
+          <option *ngFor="let category of categories" [value]="category._id">{{ category.nameCategory }}</option>
+        </select>
+      </div>
+      <div class="button-container">
+        <button type="submit">Guardar Cambios</button>
+        <button type="button" (click)="cancelEdit()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
