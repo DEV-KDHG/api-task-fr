@@ -127,9 +127,9 @@ export class TaskListComponent implements OnInit {
         const index = this.tasks.findIndex(task => task._id === updatedTask._id);
         if (index !== -1) {
           this.tasks[index] = updatedTask;
-          this.populateTaskDetails();
-          this.filteredTasks = [...this.tasks]; // Actualiza las tareas filtradas también
         }
+        this.populateTaskDetails(); // Actualiza los detalles de la tarea
+        this.fetchTasks(); // Recarga todas las tareas
         this.cancelEdit();
       },
       (error) => {
@@ -137,6 +137,20 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
+  
+  // Método para cargar todas las tareas
+  loadTasks() {
+    this.service.getAllTasks().subscribe(
+      (tasks: any[]) => {
+        this.tasks = tasks;
+        this.filteredTasks = [...this.tasks]; // Actualiza las tareas filtradas también
+      },
+      (error) => {
+        console.error('Error al cargar las tareas:', error);
+      }
+    );
+  }
+  
 
   searchTasks() {
     if (!this.searchQuery.trim()) {
